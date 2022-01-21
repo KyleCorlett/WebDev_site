@@ -1,0 +1,402 @@
+*{
+    --primary: #000; 
+    --secondary: #87CBAC;
+    --highlight: #90FFDC;
+    --outline: #8DE4FF;
+    --wrong: #8AC4FF;
+    --typewriterSpeed: 2s;
+    --typewriterCharacters: 24;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--primary);
+    color: white;
+    line-height: 1.6;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.navContainer {
+    width: 100%;
+    height: 100%;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+/*Main Section*/
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+}
+
+section h1 {
+    font-size: 4rem;
+    font-family: 'Oleo Script', cursive;
+    z-index: 1;
+}
+section p {
+    font-size: 1.5rem;
+    font-family: 'Dancing Script', cursive;
+    z-index: 1;
+}
+footer {
+    text-align: center;
+    background-color: black;
+    width: 100%;
+}
+/*NavBar*/
+.navbar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 60px;
+    background-color: var(--secondary);
+    overflow: hidden;
+}
+.navbar ul {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.navbar ul li {
+    margin: 0 1rem;
+    padding: 1rem;
+    width: 25%;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #f4f4f4;
+}
+.navbar ul li a:hover {
+    color: var(--outline);
+}
+/*Home Section*/
+.name{
+    font-size: clamp(1rem, 3vw + 1rem, 4rem);
+    position: relative;
+    width: max-content;
+}
+.name::before,
+.name::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.name::before {
+    background: var(--secondary);
+    width: 110%;
+    animation: typewriter var(--typewriterSpeed)
+    steps(var(--typewriterCharacters)) 1s forwards;
+}
+
+.name::after {
+    width: 0.125em;
+    background: black;
+    animation: typewriter var(--typewriterSpeed)
+    steps(var(--typewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--typewriterCharacters)) infinite;
+}
+
+.subtitle {
+    font-size: 2rem;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: fadeInUp 1s ease calc(var(--typewriterSpeed) + 2s) forwards;
+}
+@keyframes typewriter {
+  to {
+    left: 105%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.shape p{
+    margin-top: 0;
+    padding: 0;
+    z-index: 1;
+}
+.shape h1{
+    margin-bottom: 0;
+}
+.shape {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    background: var(--secondary);
+}
+.shape:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: inherit;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform-origin: top left;
+    transform: skewY(-4deg);
+}
+.content { 
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+/*Skills/About Section*/
+.aboutContainer{
+    display: flex;
+}
+.aboutCard{
+    border: var(--outline) 1px solid;
+    border-radius: 5px;
+    color: white;
+    width: 100%;
+    margin: 0 5px;
+    padding: 3% 1%;
+    transition: transform 500ms ease;
+    overflow: hidden;
+    background-image: linear-gradient(90deg,
+        var(--primary) 0%,
+        var(--primary) 50%,
+        var(--secondary) 50%,
+        var(--secondary) 100%);
+    background-size: 400%;
+    transition: background-position .3s cubic-bezier(.47, .1, 1, .63),
+      color .2s linear;
+    transition-delay: 0.0s, 0.15s;
+}
+
+.aboutCard:hover {
+    color: white;
+    background-position: -50% 100%;
+}
+.aboutInfo{
+    width: 100%;
+    text-align: center;
+}
+#about p{
+    font-size: 20px;
+}
+#about h2{
+    text-decoration: underline;
+}
+.skillColumn {
+    float: left;
+    width: 17%;
+    padding: 1.5%;
+    max-width: 150px;
+}
+/* Work Section */
+.workSection{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+.row{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 100%;
+}
+.column {
+    border-radius: 5px;
+}
+.containerTab {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    color: white;
+    width: 100%;
+    border: var(--outline) 1px solid;
+    border-radius: 5px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.closebtn {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.btn1{
+    background-image: url(/docs/images/PurplePixels.webp);
+    background-size: cover;
+}
+.btn2{
+    background-image: url();
+    background-size: cover;
+}
+.btn3{
+    background-image: url();
+    background-size: cover;
+}
+#b1{
+    background-image: url(/docs/images/PurpleHallWay.webp);
+    background-size: cover;
+}
+#b2{
+    background-image: url();
+    background-size: cover;
+}
+#b3{
+    background-image: url();
+    background-size: cover;
+}
+.card{
+    border: var(--outline) 1px solid;
+    border-radius: 5px;
+    overflow: hidden;
+    text-decoration: none !important;
+    color: white;
+    width: 95%;
+    margin-bottom: 10px;
+    padding: 10rem 0 0;
+    transition: transform 500ms ease;
+}
+.cardContainer{
+    --padding: 3rem;
+    padding: var(--padding);
+    background: linear-gradient(hsl(0 0% 0% / 0), hsl(255 50% 0% / .5) 20%, hsl(0 0% 0% / 1));
+    transform: translateY(10%);
+    transition: transform 500ms ease;
+    width: 100%;
+}
+.card:hover{
+        transform: scale(1.05);
+}
+.card:hover .card-title::after{
+        transform: scaleX(1);
+}
+.card:hover .cardContainer{
+        transform: translateY(0);
+}
+.card:hover .cardContainer > *{
+        opacity: 1;
+        transition: opacity 500ms linear;
+        transition-delay: 300ms;
+}
+.cardContainer > *:not(.card-title){
+        opacity: 0;
+        transition-delay: 1000ms;
+}
+#work1{
+    background-image: url(/docs/images/Github_screen.webp);
+    background-size: cover;
+}
+#work2{
+    background-image: url(/docs/images/LinkedIn.webp);
+    background-size: cover;
+}
+#work3{
+    background-image: url(/docs/Images/Nocturnal_Media.webp);
+    background-size: cover;
+}
+.card-title{
+    position: relative;
+    width: max-content;
+    max-width: 100%;
+    padding-bottom: 5px;
+}
+.card-title::after{
+    content: "";
+    position: absolute;
+    height: 3px;
+    left: calc(var(--padding) * -1);
+    background: var(--highlight);
+    width: calc(100% + var(--padding));
+    bottom: 0;
+    transform: scaleX(0);
+    transition: transform 300ms ease;
+    transform-origin: left;
+}
+/*Contact Section*/
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--outline);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    resize: vertical;
+}
+  
+input[type=submit] {
+    background-color: black;
+    color: white;
+    padding: 12px 20px;
+    border: 2px solid var(--outline);
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+input[type=submit]:hover {
+    background-color: var(--secondary);
+}
+.contactform {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      box-shadow: 30rem rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+      font-family: 'Dancing Script', cursive;
+      font-size: large;
+      margin-top: 5rem;
+      margin-bottom: 20px;
+      height: 90%;
+}
+.form {
+      max-width: 600px;
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+}
+
+.contactform h1{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
